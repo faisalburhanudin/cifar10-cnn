@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: train-cifar
+spec:
+  template:
+    metadata:
+      name: train-cifar
+    spec:
+      containers:
+      - name: capsule
+        image: gcr.io/lyrical-beach-154604/cifar:gpu
+        command: ["python"]
+        args: ["cifar10_cnn_capsule.py"]
+      restartPolicy: Never
